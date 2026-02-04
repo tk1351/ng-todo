@@ -1,0 +1,15 @@
+.todo-list {
+  margin-inline: 20px;
+}
+
+@media (min-width: 834px) {
+  .todo-list {
+    margin-inline: 60px;
+  }
+}
+
+@media (min-width: 1444px) {
+  .todo-list {
+    margin-inline: 222px;
+  }
+}

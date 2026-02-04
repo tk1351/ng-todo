@@ -1,0 +1,26 @@
+<nav class="pagination" aria-labelledby="pagination">
+  <h2 class="sr-only">Pagination</h2>
+  <ul>
+    <li>
+      <a
+        [routerLink]="isFirstPage() ? null : '/'"
+        [queryParams]="prevQueryParams()"
+        [ariaDisabled]="isFirstPage() && true"
+        [class.link--disabled]="isFirstPage()"
+        class="link"
+        >Prev</a
+      >
+    </li>
+    <li>{{ currentPage() }}</li>
+    <li>
+      <a
+        [routerLink]="isMaxPage() ? null : '/'"
+        [queryParams]="nextQueryParams()"
+        [ariaDisabled]="isMaxPage() && true"
+        [class.link--disabled]="isMaxPage()"
+        class="link"
+        >Next</a
+      >
+    </li>
+  </ul>
+</nav>

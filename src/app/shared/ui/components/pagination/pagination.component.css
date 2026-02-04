@@ -1,0 +1,32 @@
+.pagination {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.pagination > * {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link:visited {
+  color: inherit;
+}
+
+.link--disabled {
+    opacity: 0.6;
+    cursor: none;
+}
