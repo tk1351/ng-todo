@@ -1,9 +1,11 @@
 <div class="todo-list">
   <h1>Ng-Todo</h1>
   <ul>
-    @if (todos$ | async; as todos) {
-      @for (todo of todos; track todo.id) {
-        <li>{{ todo.title }} : {{ todo.completed }}</li>
+    @if (loading()) {
+      <p>Loading...</p>
+    } @else {
+      @for (todo of todos(); track todo.id) {
+        <todo-item [todo]="todo"></todo-item>
       }
     }
   </ul>
