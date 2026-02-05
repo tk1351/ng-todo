@@ -1,6 +1,6 @@
 import { Component, output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TodoBody } from '../../../core/models/todo';
+import { CreateTodoBody } from '../../../core/models/todo';
 
 @Component({
   selector: 'add-todo',
@@ -12,7 +12,7 @@ export class AddTodoComponent {
   private readonly userId = 1;
   title = new FormControl('');
 
-  submitEvent = output<TodoBody>();
+  submitEvent = output<CreateTodoBody>();
 
   onSubmit(event: Event) {
     event.preventDefault();

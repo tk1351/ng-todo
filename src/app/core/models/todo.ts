@@ -5,4 +5,5 @@ export type Todo = {
   completed: boolean;
 };
 
-export type TodoBody = Omit<Todo, 'id'>;
+export type CreateTodoBody = Omit<Todo, 'id'>;
+export type ToggleTodoBody = Pick<Todo, 'id' | 'completed'>;

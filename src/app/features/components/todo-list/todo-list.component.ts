@@ -1,7 +1,7 @@
 import { Component, effect, inject, signal, viewChild } from '@angular/core';
 import { TodoService } from '../../../core/services/todo';
 import { map } from 'rxjs';
-import { Todo, TodoBody } from '../../../core/models/todo';
+import { Todo, CreateTodoBody } from '../../../core/models/todo';
 import { PaginationComponent } from '../../../shared/ui/components/pagination/pagination.component';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -49,7 +49,7 @@ export class TodoListComponent {
     });
   }
 
-  addTodo(body: TodoBody) {
+  addTodo(body: CreateTodoBody) {
     this.todoService.createTodo(body).subscribe({
       next: (newTodo) => {
         this.notificationService.show(`${newTodo.title}を追加しました。`, 'success');

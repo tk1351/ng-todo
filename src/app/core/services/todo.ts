@@ -1,11 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Todo, TodoBody } from '../models/todo';
+import { Todo, CreateTodoBody, ToggleTodoBody } from '../models/todo';
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
   private http = inject(HttpClient);
+  private readonly API_URL = 'https://jsonplaceholder.typicode.com/todos';
 
   setup() {
     console.log('🚀 TodoService');
@@ -15,13 +16,14 @@ export class TodoService {
     const headers = new HttpHeaders({
       'Cache-Control': 'no-cache',
     });
-    return this.http.get<Todo[]>(
-      `https://jsonplaceholder.typicode.com/todos?_start=${start}&_limit=${limit}`,
-      { headers },
-    );
+    return this.http.get<Todo[]>(`${this.API_URL}?_start=${start}&_limit=${limit}`, { headers });
   }
 
-  createTodo(body: TodoBody): Observable<Todo> {
-    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', body);
+  createTodo(body: CreateTodoBody): Observable<Todo> {
+    return this.http.post<Todo>(`${this.API_URL}`, body);
+  }
+
+  toggleTodo({ id, completed }: ToggleTodoBody): Observable<Todo> {
+    return this.http.patch<Todo>(`${this.API_URL}/${id}`, { completed });
   }
 }

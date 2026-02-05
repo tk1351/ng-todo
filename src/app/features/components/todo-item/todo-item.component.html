@@ -1,4 +1,4 @@
 <li class="todo-item">
   <span class="todo-title">{{ todo().title }}</span
-  ><input type="checkbox" [checked]="todo().completed" />
+  ><input type="checkbox" [checked]="todo().completed" (change)="toggleTodo()" />
 </li>
