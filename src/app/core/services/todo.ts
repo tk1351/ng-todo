@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Todo } from '../models/todo';
+import { Todo, TodoBody } from '../models/todo';
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
@@ -19,5 +19,9 @@ export class TodoService {
       `https://jsonplaceholder.typicode.com/todos?_start=${start}&_limit=${limit}`,
       { headers },
     );
+  }
+
+  createTodo(body: TodoBody): Observable<Todo> {
+    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', body);
   }
 }

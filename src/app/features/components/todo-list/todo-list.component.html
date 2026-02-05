@@ -1,5 +1,6 @@
 <div class="todo-list-container">
   <h1>Ng-Todo</h1>
+  <add-todo (submitEvent)="addTodo($event)"></add-todo>
   <ul class="todo-list">
     @if (loading()) {
       @for (skelton of skeltonItems; track $index) {
