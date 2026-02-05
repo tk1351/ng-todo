@@ -27,6 +27,6 @@ export class AddTodoComponent {
   }
 
   reset() {
-    this.title.reset()
+    this.title.reset();
   }
 }

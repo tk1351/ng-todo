@@ -1,0 +1,58 @@
+.toast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast-item {
+  background-color: oklch(62.7% 0.194 149.214);
+  color: oklch(98.4% 0.003 247.858);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: 240px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.toast-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes slide-in {
+  from {
+    translate: 100% 0;
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    translate: 0 0;
+    opacity: 1;
+  }
+  to {
+    translate: 100% 0;
+    opacity: 0;
+  }
+}
+
+.slide-in {
+  animation: slide-in 300ms ease-out;
+}
+
+.slide-out {
+  animation: slide-out 300ms ease-in;
+}
+
+@media (min-width: 834px) {
+  .toast-item {
+    width: 320px;
+  }
+}

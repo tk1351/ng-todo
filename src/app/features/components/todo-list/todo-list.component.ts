@@ -8,6 +8,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { SkeletonComponent } from '../../../shared/ui/components/skeleton/skeleton.component';
 import { AddTodoComponent } from '../add-todo/add-todo.component';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   imports: [PaginationComponent, TodoItemComponent, AddTodoComponent, SkeletonComponent],
@@ -24,8 +25,9 @@ export class TodoListComponent {
 
   private todoService = inject(TodoService);
   private activatedRoute = inject(ActivatedRoute);
+  private notificationService = inject(NotificationService);
 
-  addTodoComponent = viewChild(AddTodoComponent)
+  addTodoComponent = viewChild(AddTodoComponent);
 
   currentPage = toSignal(
     this.activatedRoute.queryParams.pipe(map((params) => Number(params['page']) || 1)),
@@ -50,12 +52,13 @@ export class TodoListComponent {
   addTodo(body: TodoBody) {
     this.todoService.createTodo(body).subscribe({
       next: (newTodo) => {
-        console.log('create', newTodo)
+        this.notificationService.show(`${newTodo.title}を追加しました。`, 'success');
         this.addTodoComponent()?.reset();
       },
       error: (error) => {
-        console.error(error)
-      }
+        this.notificationService.show('エラーが発生しました。', 'error');
+        console.error(error);
+      },
     });
   }
 }

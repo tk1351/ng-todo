@@ -1,0 +1,10 @@
+<ul class="toast-list">
+  @for (notification of notifications(); track notification.id) {
+    <li class="toast-item" animate.enter="slide-in" animate.leave="slide-out">
+      <span>{{ notification.message }}</span>
+      <button type="button" (click)="clearToast(notification.id)" class="toast-button">
+        clear
+      </button>
+    </li>
+  }
+</ul>
