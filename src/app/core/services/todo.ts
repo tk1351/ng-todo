@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Todo } from '../models/todo';
 
@@ -12,8 +12,12 @@ export class TodoService {
   }
 
   getTodos(start = 0, limit = 10): Observable<Todo[]> {
+    const headers = new HttpHeaders({
+      'Cache-Control': 'no-cache',
+    });
     return this.http.get<Todo[]>(
       `https://jsonplaceholder.typicode.com/todos?_start=${start}&_limit=${limit}`,
+      { headers },
     );
   }
 }
