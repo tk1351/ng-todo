@@ -6,15 +6,17 @@ import { PaginationComponent } from '../../../shared/ui/components/pagination/pa
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { SkeletonComponent } from '../../../shared/ui/components/skeleton/skeleton.component';
 
 @Component({
-  imports: [PaginationComponent, TodoItemComponent],
+  imports: [PaginationComponent, TodoItemComponent, SkeletonComponent],
   selector: 'todo-list',
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
   private readonly limit = 10;
+  readonly skeltonItems = Array.from({ length: this.limit });
 
   todos = signal<Todo[]>([]);
   loading = signal(false);

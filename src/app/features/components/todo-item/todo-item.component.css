@@ -1,0 +1,20 @@
+.todo-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  height: 56px;
+  border-block-start: 1px solid gray;
+  padding-inline: 8px;
+}
+
+.todo-title {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+:host(:first-child) .todo-item {
+  border-block-start: none;
+}

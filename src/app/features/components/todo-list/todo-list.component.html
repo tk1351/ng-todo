@@ -1,8 +1,10 @@
-<div class="todo-list">
+<div class="todo-list-container">
   <h1>Ng-Todo</h1>
-  <ul>
+  <ul class="todo-list">
     @if (loading()) {
-      <p>Loading...</p>
+      @for (skelton of skeltonItems; track $index) {
+        <skeleton-item></skeleton-item>
+      }
     } @else {
       @for (todo of todos(); track todo.id) {
         <todo-item [todo]="todo"></todo-item>

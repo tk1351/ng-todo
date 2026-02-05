@@ -1,15 +1,22 @@
-.todo-list {
+.todo-list-container {
   margin-inline: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo-list {
+  border: 1px solid gray;
 }
 
 @media (min-width: 834px) {
-  .todo-list {
+  .todo-list-container {
     margin-inline: 60px;
   }
 }
 
 @media (min-width: 1444px) {
-  .todo-list {
+  .todo-list-container {
     margin-inline: 222px;
   }
 }
